@@ -1,0 +1,85 @@
+// This is the implementation of two Stack within an Array
+// first stack starting from the from and the second stack starting from the end
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+
+class twoStack{
+    int top1,top2,size;
+    int* arr;
+    public:
+    twoStack (int n)
+    {
+        size = n;
+        top1=-1;
+        int arr[n];
+        top2=size;
+    }
+    void push1(int x)
+    {
+        if(top1<top2)
+        {
+            top1++;
+            arr[top1]=x;
+        }
+        else
+        {
+            cout<<"The stack is overflow";
+        }
+    }
+    void push2(int x)
+    {
+        if(top2>top1)
+        {
+            
+            arr[top2]=x;
+            top2--;
+        }
+        else
+        {
+            cout<<"The stack is overflow";
+        }
+    }
+    int pop1()
+    {   
+        if(top1 ==-1)
+        {
+            cout<<"The Stack is empty";
+        }
+        else
+        {
+            cout<<arr[top1]<<" Element is being removed from the Stack";
+            top1--;
+        }
+        
+    }
+    int pop2()
+    {   
+        if(top2 == size)
+        {
+            cout<<"The Stack is empty";
+        }
+        else
+        {
+            cout<<arr[top2]<<" Element is being removed from the Stack";
+            top2++;
+        }
+        
+    }
+};
+
+int main()
+{   twoStack tsa(5); //initializing the constructor
+    tsa.push1(5);
+    tsa.push2(10);
+    tsa.push2(15);
+    tsa.push1(11);
+    tsa.push2(7);
+    cout << tsa.pop1(); 
+    tsa.push2(40); 
+    cout << tsa.pop2(); 
+    return 0; 
+    
+    
+    
+}
