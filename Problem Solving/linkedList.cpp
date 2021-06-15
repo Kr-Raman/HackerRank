@@ -99,6 +99,26 @@ using namespace std;
      cout<<endl;
      
  }
+ // this function reverses the linked list
+ void reverseLinkedList(struct Node * head)
+ {
+     struct Node * prev=new Node();
+     struct Node * curr=new Node();
+     struct Node * ahead=new Node();
+
+     prev = NULL;
+     curr = head;
+     ahead = NULL;
+     while(curr!= NULL)
+     {
+         ahead = curr->next;
+         curr->next = prev;
+         prev = curr;
+         curr = ahead;
+     }
+
+    start = prev;
+ }
 
  void PrintList (struct Node * head)
  {
@@ -130,7 +150,10 @@ int main(int argc, const char** argv) {
     insertAtBeginning(40);
     insertAtLast(5);
     PrintList(start);
-    reversePrintList(start);
+    // reversePrintList(start);
+    cout<<"Linked list reversed For real"<<endl;
+    reverseLinkedList(start);
+    PrintList(start);
 
 
     return 0;
