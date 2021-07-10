@@ -50,18 +50,58 @@ void printTree (Node * node)
     printTree(node->right);
     
 }
+void print_topview(Node * root)
+{
+    if(root == NULL)
+        return;
+    queue<Node *>q;
+    map<int,int> m ;
+    int h_dist = 0;
+    root->h_dist = h_dist;
+    q.push(root);
+    cout<<"Top view of the given Tree :"<<endl;
+
+    while(q.size()){
+        h_dist = root->h_dist;
+        if(m.count(h_dist)== 0)
+        {
+            m[h_dist] = root->key;
+        }
+        if(root->left)
+        {
+            root->left->h_dist = h_dist -1;
+            q.push(root->left);
+        }
+        if(root->right)
+        {
+            root->right->h_dist = h_dist+1;
+            q.push(root->right);
+
+        }
+        q.pop();
+        root=q.front();
+
+    }
+    for(auto i = m.begin();i != m.end();i++)
+    {
+        cout<<i->second<< " ";
+    }
+}
 int main()
 {
     Node * root = NULL;
-    root = insertNode(root ,5);
-    root=insertNode(root ,1);
-   root= insertNode(root,4);
-   root= insertNode(root,7);
-   root= insertNode(root,10);
-   root= insertNode(root,11);
+    root = insertNode(root ,11);
+    root=insertNode(root ,23);
+   root= insertNode(root,35);
+   root= insertNode(root,47);
+   root= insertNode(root,59);
+   root= insertNode(root,68);
    root= insertNode(root,2);
    root= insertNode(root,6);
    root= insertNode(root,15);
 
+
     printTree(root);
+
+    print_topview(root);
 }
