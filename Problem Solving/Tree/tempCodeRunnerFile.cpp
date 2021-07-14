@@ -1,10 +1,1 @@
-  Node * root = NULL;
-    root = insertNode(root ,11);
-    root=insertNode(root ,23);
-   root= insertNode(root,35);
-   root= insertNode(root,47);
-   root= insertNode(root,59);
-   root= insertNode(root,68);
-   root= insertNode(root,2);
-   root= insertNode(root,6);
-   root= insertNode(root,15);
+    // root2 = insertnode(root2 , 22 );
